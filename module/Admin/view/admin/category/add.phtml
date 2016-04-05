@@ -1,0 +1,46 @@
+<div class="bs-docs-section">
+    <div class="well">
+        <?php
+        $form->setattribute('action',$this->url('admin/category',array('action' => 'add')));
+        $form->prepare();
+        print $this->form()->openTag($form);
+        print '<fieldset><legend>Добавление категории</legend>';
+        foreach($form as $element){
+            print '<div class="form-group">';
+            $attributes = $element->getAttributes();
+
+            if($element->getLabel()){
+                $element->setLabelAttributes(array('class' => 'col-lg-2 control-label'));
+                if(isset($attributes['required'])){
+                    $element->setLabel($element->getLabel() . '  *');
+                }
+            }
+
+            if(isset($attributes['type']) && $attributes['type'] == 'text'){
+                print $this->formLabel($element);
+                print "<div class='col-lg-10'>";
+                print $this->formInput($element);
+                print "</div>";
+            }elseif(isset($attributes['type']) && $attributes['type'] == 'textarea'){
+                print $this->formLabel($element);
+                print "<div class='col-lg-10'>";
+                print $this->formTextArea($element);
+                print "</div>";
+            }elseif(isset($attributes['file']) && $attributes['type'] == 'file'){
+                print $this->formLabel($element);
+                print "<div class='col-lg-10'>";
+                print $this->formFile($element);
+                print "</div>";
+            }else{
+                print "<div class='col-lg-10'>";
+                print $this->formRow($element);
+                print "</div>";
+            }
+            print '</div>';
+
+        }
+        print "</fieldset>";
+        print $this->form()->closeTag($form)
+        ?>
+    </div>
+</div>

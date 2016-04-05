@@ -1,0 +1,57 @@
+<div class="bs-docs-section">
+    <div class="well">
+        <?php
+        $form->setattribute('action',$this->url('admin/article',array('action' => 'edit', 'id' => $id)));
+        $form->prepare();
+        print $this->form()->openTag($form);
+        print '<fieldset><legend>Редактирование статьи :</legend>';
+        foreach($form as $element) {
+            print '<div class="form-group">';
+            $attributes = $element->getAttributes();
+            $label = '';
+            if ($element->getLabel()) {
+                $element->setLabelAttributes(array('class' => 'col-lg-2 control-label'));
+                $label = $element->getLabel();
+                if (isset($attributes['required'])) {
+                    $label .= '&nbsp; * ';
+                }
+
+                $label = "<label class='col-lg-2 control-label'>{$label}</label>";
+            }
+
+            $type = isset($attributes['type']) ? $attributes['type'] : '';
+            $formElement = '';
+
+            switch ($type) {
+
+                case 'text':
+                    $formElement = $this->formInput($element);
+                    break;
+
+                case 'textarea' :
+                    $formElement = $this->formTextArea($element);
+                    break;
+
+                case 'select' :
+                    $formElement = $this->formSelect($element);
+                    break;
+
+                default:
+                    $formElement = $this->formRow($element);
+                    $label = '';
+                    break;
+
+            }
+
+            print "{$label}<div class='col-lg-10'>{$formElement}</div>";
+            print "</div>";
+
+
+        }
+
+        print "</fieldset>";
+        print $this->form()->closeTag($form);
+        ?>
+    </div>
+</div>
+<script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>

@@ -1,0 +1,24 @@
+<h1>Блог на zendframework.</h1>
+<?php foreach($article as $item) :?>
+<?php $category = $item->getCategory(); if($category){$catName = $category->getCategoryName();}else{$category = '';}?>
+<?php if($item->getIsPublic()){$isPublic = 'Да';}else{$isPublic = 'Нет';}?>
+<?php $this->url('blog', array('action' => 'article', 'id' => $item->getId()));?>
+    <article class="panel panel-default">
+        <div class="page-header" style="margin-top: 17px">
+            <h4 style="padding-left: 25px; font-size: 20px;">
+                <a href="<?php print $this->url('blog', array('action' => 'article', 'id' => $item->getId()));?>"><?php print $item->getTitle();?></a>
+            </h4>
+        </div>
+        <div class="panel-body">
+            <?php print $item->getShortArticleForBody();?>
+        </div>
+        <div class="panel-footer" style="height: 45px">
+            <div style="width: 300px; float: left;">Категория <?php $category?></div>
+            <div style="text-align: right">
+                <a href="<?php print $this->url('blog', array('action' => 'article', 'id' => $item->getId()));?>">Читать далее...</a>
+            </div>
+        </div>
+    </article>
+<?php endforeach;?>
+
+<?php print $this->paginationControl($article,'Sliding','pagination_control',array('route' => 'blog')); ?>
