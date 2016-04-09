@@ -38,9 +38,9 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="short_arcticle", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="short_article", type="text", length=65535, nullable=true)
      */
-    private $shortArcticle;
+    private $shortArticle;
 
     /**
      * @var boolean
@@ -120,27 +120,27 @@ class Article
     }
 
     /**
-     * Set shortArcticle
+     * Set shortArticle
      *
-     * @param string $shortArcticle
+     * @param string $shortArticle
      *
      * @return Article
      */
-    public function setShortArcticle($shortArcticle)
+    public function setShortArticle($shortArticle)
     {
-        $this->shortArcticle = $shortArcticle;
+        $this->shortArticle = $shortArticle;
 
         return $this;
     }
 
     /**
-     * Get shortArcticle
+     * Get shortArticle
      *
      * @return string
      */
-    public function getShortArcticle()
+    public function getShortArticle()
     {
-        return $this->shortArcticle;
+        return $this->shortArticle;
     }
 
     /**
@@ -210,7 +210,7 @@ class Article
      */
     public function getShortArticleforTable()
     {
-        $article = strip_tags($this->getShortArcticle());
+        $article = strip_tags($this->getShortArticle());
         $article = mb_substr($article,0, 20,'UTF8') . '...';
         return $article;
     }
@@ -221,7 +221,7 @@ class Article
      */
     public function getShortArticleForBody()
     {
-        $article = $this->getShortArcticle();
+        $article = $this->getShortArticle();
         if(empty($article)){
             $article = $this->getArticle();
         }
@@ -236,7 +236,7 @@ class Article
      */
     public function getFullArticle()
     {
-        $article = $this->getShortArcticle() . $this->getArticle();
+        $article = $this->getShortArticle() . $this->getArticle();
 
         return $article;
     }

@@ -13,6 +13,7 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 /**
  * Class ArcticleController
+ *
  * Контроллер,отвечающий за работу со статьями
  * @package Admin\Controller
  */
@@ -58,6 +59,7 @@ class ArticleController extends BaseController
             $status = '';
 
             $data = $request->getPost();
+
             $article = new Article();
 
             $form->setHydrator(new DoctrineHydrator($em, 'Article'));

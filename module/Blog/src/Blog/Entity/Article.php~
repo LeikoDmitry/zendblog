@@ -38,9 +38,9 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="short_arcticle", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="short_article", type="text", length=65535, nullable=true)
      */
-    private $shortArcticle;
+    private $shortArticle;
 
     /**
      * @var boolean
