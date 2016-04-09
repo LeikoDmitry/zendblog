@@ -3,6 +3,7 @@ namespace Blog\Controller;
 
 
 use Application\Controller\BaseController as BaseController;
+use Blog\Entity\Comment;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use Zend\Paginator\Paginator;
@@ -60,7 +61,26 @@ class IndexController extends BaseController
             return $this->notFoundAction(); // метод вызывающий 404 ошибку
         }
 
-        return array('article' => $article);
-
+        $comment = new Comment();
+        $form = $this->getCommentForm($comment);
+        return array('article' => $article, 'form' => $form);
     }
+
+    /**
+     * Метод создания формы из анотаций
+     *
+     * @param Comment $comment
+     * @return \Zend\Form\Form
+     */
+    protected function getCommentForm(Comment $comment)
+    {
+        $builder = new AnnotationBuilder($this->getEntityManager());
+        $form = $builder->createForm(new Comment());
+        $form->setHydrator(new DoctrineHydrator($this->getEntityManager(), '\Comment'));
+        $form->bind($comment);
+
+        return $form;
+    }
+
+
 }

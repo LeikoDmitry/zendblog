@@ -6,3 +6,30 @@
         <p><?php print $article->getFullArticle();?></p>
     </div>
 </article>
+<div class="bs-docs-section">
+    <div class="well">
+        <?php $form->setAttribute('action',$this->url('blog',array('action' => 'comment-add')));?>
+        <?php $form->setAttribute('class','form-horizontal');?>
+        <?php $form->prepare();?>
+        <?php print $this->form()->openTag($form);?>
+        <fieldset>
+            <legend>Добавить комментарий</legend>
+        <div class="errors-comment"></div>
+        <?php $email = $form->get('userEmail');?>
+        <?php $email->setLabelAttributes(['class' => 'col-lg-2 control-label']);?>
+            <div class="form-group">
+                <?php print $this->formLabel($email)?>
+                <div class="col-lg-10"><?php print $this->formEmail($email);?></div>
+            </div>
+        <?php $comment = $form->get('comment');?>
+        <?php $comment->setLabelAttributes(['class' => 'col-lg-2 control-label']);?>
+            <div class="form-group">
+                <?php print $this->formLabel($comment)?>
+                <div class="col-lg-10"><?php print $this->formTextarea($email);?></div>
+            </div>
+       <input type="hidden" value="<?php print $article->getId();?>"/>
+        <?php print $this->formRow($form->get('submit'));?>
+        <?php print $this->form()->closeTag($form);?>
+        </fieldset>
+    </div>
+</div>

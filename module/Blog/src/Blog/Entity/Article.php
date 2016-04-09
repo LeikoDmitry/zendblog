@@ -221,4 +221,9 @@ class Article
 
         return $article;
     }
+
+    public function __toString()
+    {
+        return "Article class";
+    }
 }
