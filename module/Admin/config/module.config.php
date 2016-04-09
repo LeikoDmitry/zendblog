@@ -58,6 +58,8 @@ return array(
 
         ),
     ),
+
+    // Навигации сайта
     'navigation' => array(
         'default' => array(
             array(
@@ -111,16 +113,11 @@ return array(
 
         'template_map' => array(
             'pagination_control' => __DIR__ . '/../view/layout/pagination_control.phtml',
-            'layout/layout'      => __DIR__ . '/../view/layout/admin-layout.phtml',
         ),
-
-
     ),
 
-    /*******************************************
-   Еще один вариант измениния шаблона сайта
     'module_layouts' => array(
        'Admin' => '/layout/admin-layout',
     ),
-    ******************************************/
+
 );

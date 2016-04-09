@@ -63,5 +63,6 @@ return array(
         'template_path_stack' => array(
             'blog' => __DIR__ . '/../view',
         ),
+
     ),
 );

@@ -31,6 +31,7 @@ class IndexController extends BaseController
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('a')
             ->from('Blog\Entity\Article','a')
+            ->where('a.isPublic = 1')
             ->orderBy('a.id', 'ASC');
         // Создаем адаптер
         $adapter = new DoctrineAdapter(new ORMPaginator($query));
@@ -48,9 +49,9 @@ class IndexController extends BaseController
     }
 
     /**
-     * Метод, отвечающий за показ статьи
+     * Метод вывода статьи
      *
-     *
+     * @return array
      */
     public function articleAction()
     {

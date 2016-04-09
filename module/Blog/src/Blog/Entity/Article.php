@@ -191,20 +191,34 @@ class Article
         return $this->category;
     }
 
-
+    /**
+     * Получение Статьи
+     *
+     * @return string
+     */
     public function getArticleForTable()
     {
         $article = strip_tags($this->article);
         $article = mb_substr($article,0, 15,'UTF8') . '...';
         return $article;
     }
+
+    /**
+     * Получение короткой статьи
+     *
+     * @return string
+     */
     public function getShortArticleforTable()
     {
         $article = strip_tags($this->getShortArcticle());
         $article = mb_substr($article,0, 20,'UTF8') . '...';
         return $article;
     }
-
+    /**
+     * Получение короткой статьи
+     *
+     * @return string
+     */
     public function getShortArticleForBody()
     {
         $article = $this->getShortArcticle();
@@ -215,13 +229,22 @@ class Article
         return $article;
     }
 
+    /**
+     * Получение полной  статьи
+     *
+     * @return string
+     */
     public function getFullArticle()
     {
         $article = $this->getShortArcticle() . $this->getArticle();
 
         return $article;
     }
-
+    /**
+     * Метод, для предотвращения бага Doctrine
+     *
+     * @return string
+     */
     public function __toString()
     {
         return "Article class";
