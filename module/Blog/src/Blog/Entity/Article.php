@@ -62,6 +62,22 @@ class Article
 
 
     /**
+     *
+     * @param \Doctrine\Common\Collections\Collection $property
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="arcticle", cascade={"persist","remove"})
+     */
+    private $comments;
+
+
+
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+
+
+    /**
      * Get id
      *
      * @return integer
@@ -236,7 +252,7 @@ class Article
      */
     public function getFullArticle()
     {
-        $article = $this->getShortArticle() . $this->getArticle();
+        $article = $this->getArticle();
 
         return $article;
     }

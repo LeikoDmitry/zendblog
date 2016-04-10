@@ -67,6 +67,41 @@ class IndexController extends BaseController
         return array('article' => $article, 'form' => $form);
     }
 
+    public function commentAction()
+    {
+        $em = $this->getEntityManager();
+        $comment = new Comment();
+        $form = $this->getCommentForm($comment);
+        $request = $this->getRequest();
+        $response = $this->getResponse();
+
+        $data = $request->getPost();
+        if(!empty($data)){
+            $form->setData($data);
+            $messages = null;
+            if(!$form->isValid()){
+                $errors = $form->getMessages();
+                foreach($errors as $key => $value){
+                    if(!empty($value) && $key != "submit"){
+                        foreach($value as $keyer => $rower){
+                            $messages[$keyer][] = $rower;
+                        }
+                    }
+                }
+            }
+        }
+
+        if(!empty($messages)){
+            $response->setContent(json_encode($messages));
+        }else{
+            $em->persist($comment);
+            $em->flush();
+            $response->setContent(json_encode(array("success" => 1)));
+        }
+
+        return $response;
+    }
+
     /**
      * Метод создания формы из анотаций
      *
