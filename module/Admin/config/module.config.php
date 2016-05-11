@@ -7,6 +7,7 @@ return array(
             'Admin\Controller\Index' => 'Admin\Controller\IndexController',
             'category'               => 'Admin\Controller\CategoryController',
             'article'                => 'Admin\Controller\ArticleController',
+            'comment'                => 'Admin\Controller\CommentController',
         ),
     ),
 
@@ -48,6 +49,17 @@ return array(
                             'route'    => 'article/[:action/][:id/]',
                             'defaults' => array(
                                 'controller' => 'article',
+                                'action'     => 'index',
+                            ),
+                        ),
+                    ),
+
+                    'comment' => array(
+                        'type'    => 'segment',
+                        'options' => array(
+                            'route'    => 'comment/[:action/][:id/]',
+                            'defaults' => array(
+                                'controller' => 'comment',
                                 'action'     => 'index',
                             ),
                         ),
@@ -94,6 +106,12 @@ return array(
                         'label' => 'Добавление категории',
                         'route' => 'admin/category',
                         'action' => 'add',
+                    ),
+
+                    array(
+                        'label' => 'Комментарии',
+                        'route' => 'admin/comment',
+                        'action' => 'index',
                     ),
                 ),
             ),
