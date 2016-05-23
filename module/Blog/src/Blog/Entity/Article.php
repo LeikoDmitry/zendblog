@@ -1,9 +1,6 @@
 <?php
-
 namespace Blog\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Article
  *
@@ -20,35 +17,30 @@ class Article
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=100, nullable=false)
      */
     private $title;
-
     /**
      * @var string
      *
      * @ORM\Column(name="article", type="text", length=65535, nullable=false)
      */
     private $article;
-
     /**
      * @var string
      *
      * @ORM\Column(name="short_article", type="text", length=65535, nullable=true)
      */
     private $shortArticle;
-
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_public", type="boolean", nullable=false)
      */
     private $isPublic = '0';
-
     /**
      * @var \Blog\Entity\Category
      *
@@ -58,25 +50,16 @@ class Article
      * })
      */
     private $category;
-
-
-
     /**
      *
      * @param \Doctrine\Common\Collections\Collection $property
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="arcticle", cascade={"persist","remove"})
      */
     private $comments;
-
-
-
     public function getComments()
     {
         return $this->comments;
     }
-
-
-
     /**
      * Get id
      *
@@ -86,7 +69,6 @@ class Article
     {
         return $this->id;
     }
-
     /**
      * Set title
      *
@@ -97,10 +79,8 @@ class Article
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
-
     /**
      * Get title
      *
@@ -110,7 +90,6 @@ class Article
     {
         return $this->title;
     }
-
     /**
      * Set article
      *
@@ -121,10 +100,8 @@ class Article
     public function setArticle($article)
     {
         $this->article = $article;
-
         return $this;
     }
-
     /**
      * Get article
      *
@@ -134,7 +111,6 @@ class Article
     {
         return $this->article;
     }
-
     /**
      * Set shortArticle
      *
@@ -145,10 +121,8 @@ class Article
     public function setShortArticle($shortArticle)
     {
         $this->shortArticle = $shortArticle;
-
         return $this;
     }
-
     /**
      * Get shortArticle
      *
@@ -158,7 +132,6 @@ class Article
     {
         return $this->shortArticle;
     }
-
     /**
      * Set isPublic
      *
@@ -169,10 +142,8 @@ class Article
     public function setIsPublic($isPublic)
     {
         $this->isPublic = $isPublic;
-
         return $this;
     }
-
     /**
      * Get isPublic
      *
@@ -182,7 +153,6 @@ class Article
     {
         return $this->isPublic;
     }
-
     /**
      * Set category
      *
@@ -193,10 +163,8 @@ class Article
     public function setCategory(\Blog\Entity\Category $category = null)
     {
         $this->category = $category;
-
         return $this;
     }
-
     /**
      * Get category
      *
@@ -206,7 +174,6 @@ class Article
     {
         return $this->category;
     }
-
     /**
      * Получение Статьи
      *
@@ -218,7 +185,6 @@ class Article
         $article = mb_substr($article,0, 15,'UTF8') . '...';
         return $article;
     }
-
     /**
      * Получение короткой статьи
      *
@@ -241,10 +207,8 @@ class Article
         if(empty($article)){
             $article = $this->getArticle();
         }
-
         return $article;
     }
-
     /**
      * Получение полной  статьи
      *
@@ -253,7 +217,6 @@ class Article
     public function getFullArticle()
     {
         $article = $this->getArticle();
-
         return $article;
     }
     /**

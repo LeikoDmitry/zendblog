@@ -36,7 +36,7 @@ class Category extends \Blog\Entity\Category implements \Doctrine\ORM\Proxy\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Category extends \Blog\Entity\Category implements \Doctrine\ORM\Proxy\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'id', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'categoryKey', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'categoryName');
+            return ['__isInitialized__', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'id', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'categoryKey', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'categoryName'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'id', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'categoryKey', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'categoryName');
+        return ['__isInitialized__', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'id', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'categoryKey', '' . "\0" . 'Blog\\Entity\\Category' . "\0" . 'categoryName'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Category extends \Blog\Entity\Category implements \Doctrine\ORM\Proxy\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Category extends \Blog\Entity\Category implements \Doctrine\ORM\Proxy\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class Category extends \Blog\Entity\Category implements \Doctrine\ORM\Proxy\Prox
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class Category extends \Blog\Entity\Category implements \Doctrine\ORM\Proxy\Prox
     public function setCategoryKey($categoryKey)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryKey', array($categoryKey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryKey', [$categoryKey]);
 
         return parent::setCategoryKey($categoryKey);
     }
@@ -205,7 +205,7 @@ class Category extends \Blog\Entity\Category implements \Doctrine\ORM\Proxy\Prox
     public function getCategoryKey()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryKey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryKey', []);
 
         return parent::getCategoryKey();
     }
@@ -216,7 +216,7 @@ class Category extends \Blog\Entity\Category implements \Doctrine\ORM\Proxy\Prox
     public function setCategoryName($categoryName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryName', array($categoryName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryName', [$categoryName]);
 
         return parent::setCategoryName($categoryName);
     }
@@ -227,7 +227,7 @@ class Category extends \Blog\Entity\Category implements \Doctrine\ORM\Proxy\Prox
     public function getCategoryName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryName', []);
 
         return parent::getCategoryName();
     }
@@ -238,7 +238,7 @@ class Category extends \Blog\Entity\Category implements \Doctrine\ORM\Proxy\Prox
     public function exchangeArray($data)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'exchangeArray', array($data));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'exchangeArray', [$data]);
 
         return parent::exchangeArray($data);
     }
@@ -249,7 +249,7 @@ class Category extends \Blog\Entity\Category implements \Doctrine\ORM\Proxy\Prox
     public function getArrayCopy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArrayCopy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArrayCopy', []);
 
         return parent::getArrayCopy();
     }

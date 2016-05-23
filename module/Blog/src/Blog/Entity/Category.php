@@ -1,9 +1,6 @@
 <?php
-
 namespace Blog\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Category
  *
@@ -20,23 +17,18 @@ class Category
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="category_key", type="string", length=20, nullable=false)
      */
     private $categoryKey;
-
     /**
      * @var string
      *
      * @ORM\Column(name="category_name", type="string", length=100, nullable=false)
      */
     private $categoryName;
-
-
-
     /**
      * Get id
      *
@@ -46,7 +38,6 @@ class Category
     {
         return $this->id;
     }
-
     /**
      * Set categoryKey
      *
@@ -57,10 +48,8 @@ class Category
     public function setCategoryKey($categoryKey)
     {
         $this->categoryKey = $categoryKey;
-
         return $this;
     }
-
     /**
      * Get categoryKey
      *
@@ -70,7 +59,6 @@ class Category
     {
         return $this->categoryKey;
     }
-
     /**
      * Set categoryName
      *
@@ -81,10 +69,8 @@ class Category
     public function setCategoryName($categoryName)
     {
         $this->categoryName = $categoryName;
-
         return $this;
     }
-
     /**
      * Get categoryName
      *
@@ -94,7 +80,6 @@ class Category
     {
         return $this->categoryName;
     }
-
     public function exchangeArray($data)
     {
         foreach($data as $key => $val){

@@ -1,10 +1,8 @@
 <?php
-
 namespace Blog\Entity;
 //@Annotation\Validator({"name":"EmailAdress"})
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Form\Annotation;
-
 /**
  * Comment
  *
@@ -23,7 +21,6 @@ class Comment
      * @Annotation\Type("Zend\Form\Element\Hidden")
      */
     private $id;
-
     /**
      * @var string
      *
@@ -35,7 +32,6 @@ class Comment
      *
      */
     private $userEmail;
-
     /**
      * @var string
      *
@@ -48,7 +44,6 @@ class Comment
      * @Annotation\Validator({"name":"StringLength", "options":{"min":11, "max":300}})
      */
     private $comment;
-
     /**
      * @var \Blog\Entity\Article
      *
@@ -59,16 +54,12 @@ class Comment
      * @Annotation\Options({"label":"Комментарий"})
      */
     private $arcticle;
-
     /**
      * @Annotation\Type("Zend\Form\Element\Submit")
      * @Annotation\Attributes({"value":"Сохранить", "id":"btn-submit","class":"btn btn-primary"})
      * @Annotation\AllowEmpty({"allowempty":"true"})
      */
     public $submit;
-
-
-
     /**
      * Get id
      *
@@ -78,7 +69,6 @@ class Comment
     {
         return $this->id;
     }
-
     /**
      * Set userEmail
      *
@@ -89,10 +79,8 @@ class Comment
     public function setUserEmail($userEmail)
     {
         $this->userEmail = $userEmail;
-
         return $this;
     }
-
     /**
      * Get userEmail
      *
@@ -102,7 +90,6 @@ class Comment
     {
         return $this->userEmail;
     }
-
     /**
      * Set comment
      *
@@ -113,10 +100,8 @@ class Comment
     public function setComment($comment)
     {
         $this->comment = $comment;
-
         return $this;
     }
-
     /**
      * Get comment
      *
@@ -126,7 +111,6 @@ class Comment
     {
         return $this->comment;
     }
-
     /**
      * Set arcticle
      *
@@ -137,10 +121,8 @@ class Comment
     public function setArcticle(\Blog\Entity\Article $arcticle = null)
     {
         $this->arcticle = $arcticle;
-
         return $this;
     }
-
     /**
      * Get arcticle
      *
