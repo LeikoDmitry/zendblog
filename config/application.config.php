@@ -8,7 +8,7 @@
 return array(
     'modules' => array(
         'Application',
-        //'ZendDeveloperTools',
+        'ZendDeveloperTools',
         'DoctrineModule',
         'DoctrineORMModule',
         'EdpModuleLayouts',
