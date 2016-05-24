@@ -15,7 +15,7 @@ return array(
         'Blog',
         'Admin',
         'ZFTool',
-
+        'AuthDoctrine',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
