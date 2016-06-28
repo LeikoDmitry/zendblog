@@ -2,7 +2,6 @@
 
 namespace AuthDoctrine\Controller;
 
-
 use Application\Controller\BaseController;
 use Blog\Entity\User;
 use Zend\Authentication\Result;
@@ -56,7 +55,12 @@ class IndexController extends BaseController
 
     }
 
-
+    /**
+     * Создание формы из анотаций объекта
+     *
+     * @param User $user
+     * @return \Zend\Form\Form
+     */
     public function getUserForm(User $user)
     {
         $biulder = new AnnotationBuilder($this->getEntityManager());
@@ -67,6 +71,12 @@ class IndexController extends BaseController
         return $form;
     }
 
+    /**
+     * Получение формы
+     *
+     * @param User $user
+     * @return \Zend\Form\Form
+     */
     public function getLoginForm(User $user)
     {
         $form = $this->getUserForm($user);

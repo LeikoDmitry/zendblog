@@ -5,8 +5,12 @@ namespace Blog\Entity\Repository;
 use Doctrine\ORM\EntityRepository;
 use Blog\Entity\User;
 
-
-
+/**
+ * Class UserRepository
+ *
+ * Обработка полученыых от пользователя имени и пароля
+ * @package Blog\Entity\Repository
+ */
 class UserRepository extends EntityRepository
 {
     public function login(User $user, $serviceLocator)
