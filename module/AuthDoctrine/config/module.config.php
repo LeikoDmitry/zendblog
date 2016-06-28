@@ -1,6 +1,8 @@
 <?php
 namespace AuthDoctrine;
 
+use Blog\Entity\User;
+
 return array(
 
     'controllers' => array(
@@ -11,7 +13,7 @@ return array(
 
     'router' => array(
         'routes' => array(
-            'authdoctrine' => array(
+            'auth-doctrine' => array(
                 'type' => 'literal',
                 'options' => array(
                     'route'    => '/auth-doctrine/',
@@ -51,4 +53,21 @@ return array(
         'display_exceptions' => true,
     ),
 
+    'doctrine' => array(
+        'authentication' => array(
+            'orm_default' => array(
+                'identity_class' => 'Blog\Entity\User',
+                'identity_property' => 'userName',
+                'credential_property' => 'userPassword',
+                'credential_callable' => function(User $user, $password){
+                    if($user->getUserPassword() == $password){
+                        //if($user->getUserPassword() == md5('staticsalt' . $password . $user->getUserPasswordSalt())){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                },
+            ),
+        ),
+    ),
 );

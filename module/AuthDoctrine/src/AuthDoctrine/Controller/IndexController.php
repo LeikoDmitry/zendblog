@@ -11,6 +11,11 @@ use DoctrineORMModule\Form\Annotation\AnnotationBuilder;
 
 class IndexController extends BaseController
 {
+    /**
+     * Вывод всех пользователей
+     *
+     * @return array
+     */
     public function indexAction()
     {
         $entityManager = $this->getEntityManager();
@@ -18,31 +23,57 @@ class IndexController extends BaseController
         return array('users' => $users);
     }
 
+    /**
+     * Страница входа пользователя
+     *
+     *
+     * @return array
+     */
     public function loginAction()
     {
         $entiyManager = $this->getEntityManager();
         $user = new User();
-        $form = getLoginForm($user);
+        $form = $this->getLoginForm($user);
 
         $message = null;
         $request = $this->getRequest();
 
-        if($request->isPost()){
+        if($request->isPost()) {
             $form->setData($request->getPost());
-           if($form->isValid()){
-               $user = $form->getData();
-               $authresult = $entiyManager->getRepository('Blog\Entity\User')->login($user, $this->getServiceLocator());
-               if($authresult->getCode != Result::SUCCESS){
-                   foreach ($authresult->getMessage as $value){
-                       $message .= $value;
-                   }
-               }
-           }else{
-               return array();
-           }
+            if ($form->isValid()) {
+                $user = $form->getData();
+                $authresult = $entiyManager->getRepository('Blog\Entity\User')->login($user, $this->getServiceLocator());
+                if ($authresult->getCode() != Result::SUCCESS) {
+                    foreach ($authresult->getMessages() as $value) {
+                        $message .= $value . "\n";
+                    }
+                }else{
+                    return array();
+                }
+            }
         }
+        return array('form' => $form, 'messages' => $message);
 
-        return array('form' => $form, 'message' => $message);
+    }
+
+
+    public function getUserForm(User $user)
+    {
+        $biulder = new AnnotationBuilder($this->getEntityManager());
+        $form = $biulder->createForm('\Blog\Entity\User');
+        $form->setHydrator(new DoctrineHydrator($this->getEntityManager()), 'User');
+        $form->bind($user);
+
+        return $form;
+    }
+
+    public function getLoginForm(User $user)
+    {
+        $form = $this->getUserForm($user);
+        $form->setAttribute('action', '/auth-doctrine/index/login/');
+        $form->setValidationGroup('userName', 'userPassword');
+
+        return $form;
     }
 
 }

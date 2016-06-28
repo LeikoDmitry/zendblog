@@ -3,12 +3,14 @@
 namespace Blog\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\Form\Annotation;
 
 /**
  * User
  *
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="unique_key", columns={"user_name"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Blog\Entity\Repository\UserRepository")
+ * @Annotation\Name("user")
  */
 class User
 {
@@ -18,13 +20,19 @@ class User
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Annotation\Exclude()
      */
     private $id;
 
     /**
      * @var string
-     *
+     * @Annotation\Type("Zend\Form\Element\Text")
      * @ORM\Column(name="user_name", type="string", length=100, nullable=false)
+     * @Annotation\Filter({"name":"StringTrim"})
+     * @Annotation\Validator({"name":"StringLength", "options":{"min":3, "max":25}})
+     * @Annotation\Attributes({"type":"text", "class":"form-control","required":"required"})
+     * @Annotation\Options({"label":"Username:"})
+     *
      */
     private $userName;
 
@@ -32,20 +40,52 @@ class User
      * @var string
      *
      * @ORM\Column(name="user_password", type="string", length=100, nullable=false)
+     * @Annotation\Type("Zend\Form\Element\Password")
+     * @Annotation\Filter({"name":"StringTrim"})
+     * @Annotation\Validator({"name":"StringLength", "options":{"min":3, "max":25}})
+     * @Annotation\Attributes({"type":"password", "class":"form-control","required":"required"})
+     * @Annotation\Options({"label":"Password:"})
      */
     private $userPassword;
+
+
+    /**
+     * @var string
+     *
+     * @Annotation\Type("Zend\Form\Element\Password")
+     * @Annotation\Validator({"name":"identical", "options":{"token":"userPassword"}})
+     * @Annotation\Attributes({"type":"password", "class":"form-control","required":"required"})
+     * @Annotation\Options({"label":"ConfirmPassword:"})
+     *
+     */
+    public $confimPasswor;
 
     /**
      * @var string
      *
      * @ORM\Column(name="user_email", type="string", length=100, nullable=false)
+     * @Annotation\Type("Zend\Form\Element\Email")
+     * @Annotation\Filter({"name":"StringTrim"})
+     * @Annotation\Validator({"name":"StringLength", "options":{"min":1, "max":25}})
+     * @Annotation\Attributes({"type":"email", "class":"form-control","required":"required"})
+     * @Annotation\Options({"label":"Username:"})
+     * @Annotation\Validator({"name":"EmailAddress"})
      */
     private $userEmail;
+
+    /**
+     * @Annotation\Type("Zend\Form\Element\Submit")
+     * @Annotation\Attributes({"value":"Войти", "id":"btn-submit","class":"btn btn-primary"})
+     * @Annotation\AllowEmpty({"allowempty":"true"})
+     */
+    public $submit;
 
     /**
      * @var string
      *
      * @ORM\Column(name="user_password_salt", type="string", length=100, nullable=false)
+     * @Annotation\Attributes({"type":"text", "class":"form-control"})
+     * @Annotation\Options({"label":"Salt:"})
      */
     private $userPasswordSalt;
 
@@ -53,10 +93,15 @@ class User
      * @var \DateTime
      *
      * @ORM\Column(name="user_register_date", type="datetime", nullable=true)
+     * @Annotation\Attributes({"type":"date", "class":"form-control", "min":"2010-01-01T00:00:00Z","max":"2020-01-01T00:00:00Z","step":"1"})
+     * @Annotation\Options({"label":"DateRegister"})
      */
     private $userRegisterDate;
 
-
+    public function __construct()
+    {
+        $this->userRegisterDate = new \DateTime();
+    }
 
     /**
      * Get id

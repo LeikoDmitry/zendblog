@@ -36,7 +36,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'id', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'title', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'article', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'shortArticle', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'isPublic', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'category', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'comments');
+            return ['__isInitialized__', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'id', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'title', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'article', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'shortArticle', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'isPublic', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'category', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'comments'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'id', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'title', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'article', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'shortArticle', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'isPublic', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'category', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'comments');
+        return ['__isInitialized__', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'id', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'title', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'article', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'shortArticle', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'isPublic', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'category', '' . "\0" . 'Blog\\Entity\\Article' . "\0" . 'comments'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function getComments()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getComments', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getComments', []);
 
         return parent::getComments();
     }
@@ -194,7 +194,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -205,7 +205,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -216,7 +216,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -227,7 +227,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function setArticle($article)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setArticle', array($article));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setArticle', [$article]);
 
         return parent::setArticle($article);
     }
@@ -238,7 +238,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function getArticle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArticle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArticle', []);
 
         return parent::getArticle();
     }
@@ -249,7 +249,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function setShortArticle($shortArticle)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortArticle', array($shortArticle));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortArticle', [$shortArticle]);
 
         return parent::setShortArticle($shortArticle);
     }
@@ -260,7 +260,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function getShortArticle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortArticle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortArticle', []);
 
         return parent::getShortArticle();
     }
@@ -271,7 +271,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function setIsPublic($isPublic)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPublic', array($isPublic));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPublic', [$isPublic]);
 
         return parent::setIsPublic($isPublic);
     }
@@ -282,7 +282,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function getIsPublic()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPublic', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPublic', []);
 
         return parent::getIsPublic();
     }
@@ -293,7 +293,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function setCategory(\Blog\Entity\Category $category = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategory', array($category));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategory', [$category]);
 
         return parent::setCategory($category);
     }
@@ -304,7 +304,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function getCategory()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', []);
 
         return parent::getCategory();
     }
@@ -315,7 +315,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function getArticleForTable()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArticleForTable', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArticleForTable', []);
 
         return parent::getArticleForTable();
     }
@@ -326,7 +326,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function getShortArticleforTable()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortArticleforTable', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortArticleforTable', []);
 
         return parent::getShortArticleforTable();
     }
@@ -337,7 +337,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function getShortArticleForBody()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortArticleForBody', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortArticleForBody', []);
 
         return parent::getShortArticleForBody();
     }
@@ -348,7 +348,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function getFullArticle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFullArticle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFullArticle', []);
 
         return parent::getFullArticle();
     }
@@ -359,7 +359,7 @@ class Article extends \Blog\Entity\Article implements \Doctrine\ORM\Proxy\Proxy
     public function __toString()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
 
         return parent::__toString();
     }
