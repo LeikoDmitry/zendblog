@@ -1,5 +1,6 @@
 <?php
 namespace Admin;
+use Admin\Service\IsExistsValidator;
 
 /**
  * Class Module
@@ -28,6 +29,24 @@ class Module
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
+            ),
+        );
+    }
+
+    /**
+     * Регистрация сервисов
+     *
+     * @return array
+     */
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'Admin\Service\IsExistsValidator' => function($servicelocator){
+                    $entityManager = $servicelocator->get('Doctrine\ORM\EntityManager');
+                    $repository = $entityManager->getRepository('Blog\Entity\User');
+                    return new IsExistsValidator($repository);
+                }
             ),
         );
     }

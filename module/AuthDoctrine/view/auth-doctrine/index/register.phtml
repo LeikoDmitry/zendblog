@@ -1,0 +1,62 @@
+<?php
+$flash = $this->flashMessenger();
+$flash->setMessageOpenFormat('<div%s>
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+&times;
+</button><ul><li>')->setMessageSeparatorString('</li><li>')->setMessageCloseString('</li></ul></div>');
+
+print $flash->render('success', array('alert','alert-dismissable','alert-success'));
+print $flash->render('info', array('alert','alert-dismissable','alert-info'));
+print $flash->render('default', array('alert','alert-dismissable','alert-default'));
+print $flash->render('error', array('alert','alert-dismissable','alert-danger'));
+?>
+
+<?php $form->prepare();?>
+<div class="row">
+    <div class="col-lg-12" style="padding-top: 40px;">
+        <a href="<?php echo $this->url('auth-doctrine/default',array('controller' => 'index', 'action' => 'login'));?>" class="btn btn-success">
+            Войти
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8" style="padding-top: 40px;">
+        <?php echo $this->form()->openTag($form)?>
+        <div class="form-group">
+            <?php $element = $form->get('userName')?>
+            <?php echo $this->formLabel($element);?>
+            <div class="col-sm-4">
+                <?php echo $this->formText($element);?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php $element = $form->get('userEmail')?>
+            <?php echo $this->formLabel($element);?>
+            <div class="col-sm-4">
+                <?php echo $this->formText($element);?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php $element = $form->get('userPassword')?>
+            <?php echo $this->formLabel($element);?>
+            <div class="col-sm-4">
+                <?php echo $this->formPassword($element);?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php $element = $form->get('confimPasswor')?>
+            <?php echo $this->formLabel($element);?>
+            <div class="col-sm-4">
+                <?php echo $this->formPassword($element);?>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <?php echo $this->formRow($form->get('submit'));?>
+            </div>
+        </div>
+        <?php echo $this->form()->closeTag($form)?>
+    </div>
+</div>
+
+

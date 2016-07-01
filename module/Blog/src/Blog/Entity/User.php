@@ -31,7 +31,7 @@ class User
      * @Annotation\Filter({"name":"StringTrim"})
      * @Annotation\Validator({"name":"StringLength", "options":{"min":3, "max":25}})
      * @Annotation\Attributes({"type":"text", "class":"form-control","required":"required"})
-     * @Annotation\Options({"label":"Username:"})
+     * @Annotation\Options({"label":"Username", "label_attributes":{"class":"col-sm-2 control-label"}})
      *
      */
     private $userName;
@@ -44,7 +44,7 @@ class User
      * @Annotation\Filter({"name":"StringTrim"})
      * @Annotation\Validator({"name":"StringLength", "options":{"min":3, "max":25}})
      * @Annotation\Attributes({"type":"password", "class":"form-control","required":"required"})
-     * @Annotation\Options({"label":"Password:"})
+     * @Annotation\Options({"label":"Password", "label_attributes":{"class":"col-sm-2 control-label"}})
      */
     private $userPassword;
 
@@ -55,7 +55,7 @@ class User
      * @Annotation\Type("Zend\Form\Element\Password")
      * @Annotation\Validator({"name":"identical", "options":{"token":"userPassword"}})
      * @Annotation\Attributes({"type":"password", "class":"form-control","required":"required"})
-     * @Annotation\Options({"label":"ConfirmPassword:"})
+     * @Annotation\Options({"label":"ConfirmPassword", "label_attributes":{"class":"col-sm-2 control-label"}})
      *
      */
     public $confimPasswor;
@@ -68,7 +68,7 @@ class User
      * @Annotation\Filter({"name":"StringTrim"})
      * @Annotation\Validator({"name":"StringLength", "options":{"min":1, "max":25}})
      * @Annotation\Attributes({"type":"email", "class":"form-control","required":"required"})
-     * @Annotation\Options({"label":"Username:"})
+     * @Annotation\Options({"label":"Email", "label_attributes":{"class":"col-sm-2 control-label"}})
      * @Annotation\Validator({"name":"EmailAddress"})
      */
     private $userEmail;
@@ -85,7 +85,7 @@ class User
      *
      * @ORM\Column(name="user_password_salt", type="string", length=100, nullable=false)
      * @Annotation\Attributes({"type":"text", "class":"form-control"})
-     * @Annotation\Options({"label":"Salt:"})
+     * @Annotation\Options({"label":"Salt:", "label_attributes":{"class":"col-sm-2 control-label"}})
      */
     private $userPasswordSalt;
 
@@ -94,7 +94,7 @@ class User
      *
      * @ORM\Column(name="user_register_date", type="datetime", nullable=true)
      * @Annotation\Attributes({"type":"date", "class":"form-control", "min":"2010-01-01T00:00:00Z","max":"2020-01-01T00:00:00Z","step":"1"})
-     * @Annotation\Options({"label":"DateRegister"})
+     * @Annotation\Options({"label":"DateRegister", "label_attributes":{"class":"col-sm-2 control-label"}})
      */
     private $userRegisterDate;
 

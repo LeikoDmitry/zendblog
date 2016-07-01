@@ -2,7 +2,7 @@
 namespace Admin\Controller;
 
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Application\Controller\BaseAdminController as BaseController;
 
 
 /**
@@ -10,7 +10,7 @@ use Zend\Mvc\Controller\AbstractActionController;
  * Контроллер по умолчанию
  * @package Admin\Controller
  */
-class IndexController extends AbstractActionController
+class IndexController extends BaseController
 {
     public function index()
     {
