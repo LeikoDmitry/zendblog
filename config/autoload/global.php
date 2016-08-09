@@ -20,12 +20,13 @@ return array(
                 'params' => array(
                     'host'     => 'localhost',
                     'port'     => '3306',
-                    'user'     => 'root',
-                    'password' => '',
-                    'dbname'   => 'zblog',
+                    'user'     => 'leik83nl_zendblo',
+                    'password' => 'zendblog',
+                    'dbname'   => 'leik83nl_zendblo',
                     'charset' => 'UTF8',
                 ),
             ),
         ),
     ),
 );
+
