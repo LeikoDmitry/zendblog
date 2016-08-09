@@ -12,7 +12,6 @@ use DoctrineORMModule\Form\Annotation\AnnotationBuilder;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Zend\View\View;
 
-
 /**
  * Class IndexController
  * Контроллер по умолчанию
